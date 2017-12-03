@@ -27,10 +27,26 @@ function pickWord() {
     }  
   }
   compGuess(secretWord);
-  userGuess(userArray);
+  userGuess(userArray.join(" "));
 } 
 
 // !! letters that appear more than once!!!!!!! 
+
+
+
+  var targetDiv = document.getElementById("alphabet");
+  for(var i=0; i<alphabet.length;i++) {
+      var newDiv = document.createElement("div"); //.setAttribute("id", i);
+      newDiv.innerHTML = alphabet[i].toUpperCase();
+      targetDiv.appendChild(newDiv);
+      newDiv.id = alphabet[i];
+  }
+
+      
+// abcElements[i].id = 'abc-' + i;
+
+
+
 
 
 
@@ -45,15 +61,31 @@ document.onkeyup = function(event) {
     notify("your guess was " + guess);
 
 
+    // find if guess appears in the word
+    if (secretWord.indexOf(guess) >= 0) { // correct guess
+      document.getElementById(guess).style.backgroundColor = "#80ec11"; //green
+
+    } else { // incorrect guess
+      document.getElementById(guess).style.backgroundColor = "#ff3d2f"; // red
+    }
+
 
 
     for(var i=0; i<secretWord.length;i++) {
       if (secretWord[i] === guess) {
+        // correct guess
         userArray[i] = guess;
+        console.log(guess);
+        
+      } else {
+                console.log("incorect: " + guess);
+        // incorrect guess
+        
       }
+
     }
 
-
+    // check for win!
     if(userArray.toString() === secretWord.toString()) {
       console.log("win");
     } else {
@@ -63,7 +95,7 @@ document.onkeyup = function(event) {
 
 
 
-    userGuess(userArray)
+    userGuess(userArray.join(" "));
     compGuess(secretWord);
     // var correctIndex = secretWord.indexOf(guess); // find index of 
     // if (correctIndex >= 0) { // if
@@ -76,14 +108,6 @@ document.onkeyup = function(event) {
 
 
 
-
-    // } else {
-    //   // incorrect guess
-
-    // console.log("incorrect guess");
-    // }
-
-    // console.log(guess);
 
 
   }

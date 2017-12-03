@@ -1,6 +1,6 @@
 body {
-  background-color: salmon;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #dfdfdf;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #notification, #compGuess, #userGuess {
@@ -13,4 +13,22 @@ body {
   color: #fff;
   border-radius: 5px;
   font-size: 14px;
+}
+
+
+#alphabet div {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  float: left;
+  text-align: center;
+  margin: 5px;
+  border-radius: 5px;
+  padding-top: 4px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #2f2f2f;
+}
+
+#alphabet {
+  width: 399px;
 }
