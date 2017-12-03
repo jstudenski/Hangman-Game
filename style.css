@@ -16,6 +16,33 @@ body {
 }
 
 
+#remainGuess, #correctGuess, #incorrectGuess {
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 10px;
+  background-color: #2f2f2f;
+  border-radius: 50px;
+  font-size: 50px;
+  padding-top: 16px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#remainGuess {
+  color: white;
+}
+
+#correctGuess {
+  color: lime;
+}
+
+#incorrectGuess {
+  color: red;
+}
+
+
+
 #alphabet div {
   width: 30px;
   height: 30px;
@@ -32,3 +59,4 @@ body {
 #alphabet {
   width: 399px;
 }
+

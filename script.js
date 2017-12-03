@@ -4,14 +4,26 @@ window.onload = function() {
 notify("Press and letter to begin!");
 
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-var drinkNames = ['water wat', 'milk man'];
+var drinkNames = ['water water', 'milk man'];
 
 // word to guess
 var secretWord;
 // blank array
 var userArray = [];
+var guessedLetters = [];
 
-// pick word and set userArray to underscores
+var remainGuess = 9;
+var correctGuess = 0;
+var incorrectGuess = 0;
+
+displayRemainGuess(remainGuess);
+displayCorrectGuess(correctGuess);
+displayIncorrectGuess(incorrectGuess);
+
+
+
+
+// on start pick word and set userArray to underscores
 pickWord();
 
 
@@ -30,72 +42,114 @@ function pickWord() {
   userGuess(userArray.join(" "));
 } 
 
-// !! letters that appear more than once!!!!!!! 
 
-
-
-  var targetDiv = document.getElementById("alphabet");
-  for(var i=0; i<alphabet.length;i++) {
-      var newDiv = document.createElement("div"); //.setAttribute("id", i);
-      newDiv.innerHTML = alphabet[i].toUpperCase();
-      targetDiv.appendChild(newDiv);
-      newDiv.id = alphabet[i];
-  }
-
-      
-// abcElements[i].id = 'abc-' + i;
-
-
-
-
-
-
+// create alphabet divs 
+for(var i=0; i<alphabet.length;i++) {
+    var newDiv = document.createElement("div"); //.setAttribute("id", i);
+    // run the game when a letter is pressed
+    newDiv.onclick = function() {
+     runGame(this.id);
+    }
+    newDiv.innerHTML = alphabet[i].toUpperCase();
+    document.getElementById("alphabet").appendChild(newDiv);
+    newDiv.id = alphabet[i];
+}
+    
 // every time a key is pressed
 document.onkeyup = function(event) {
+  // make letter lower case (just in case)
+  var guess = event.key.toLowerCase(); 
+  // see if choice is a valid letter
+  if (alphabet.indexOf(guess) < 0) { 
+    notify("Invalid choice! please pick a letter");
+  } else {
+    runGame(guess); // run the game
+  }  
+} // end onkeyup function
 
-  var guess = event.key.toLowerCase(); // make letter lower case, just in case
-  
-  if (alphabet.indexOf(guess) < 0){ // see if choice is a valid letter
-    notify("invalid! please pick a letter");
-  } else { // if the letter is valid
-    notify("your guess was " + guess);
 
+
+function runGame(guess) {
+
+
+  // has letter been guessed before?
+  if (guessedLetters.indexOf(guess) !== -1) {
+    // letter has already been chosen
+    console.log("letter has already been chosen: " + guess);
+  } else {
+    // a new letter has been chosen
+    console.log("new letter was chosen: " + guess);
+    // add guess to array of chosen letters
+    guessedLetters.push(guess);
 
     // find if guess appears in the word
-    if (secretWord.indexOf(guess) >= 0) { // correct guess
+    if (secretWord.indexOf(guess) >= 0) { 
+      // correct guess:
       document.getElementById(guess).style.backgroundColor = "#80ec11"; //green
-
-    } else { // incorrect guess
+      correctGuess++;
+      displayCorrectGuess(correctGuess);
+    } else { 
+      // incorrect guess:
       document.getElementById(guess).style.backgroundColor = "#ff3d2f"; // red
-    }
+      incorrectGuess++;
+      remainGuess--;
+      displayRemainGuess(remainGuess);
+      displayIncorrectGuess(incorrectGuess);
+    };
+
+
+
+  };
 
 
 
     for(var i=0; i<secretWord.length;i++) {
       if (secretWord[i] === guess) {
-        // correct guess
+        // correct guess:
+
+        notify("Your guess was correct: " + guess);
+        // set array of user guesses 
         userArray[i] = guess;
-        console.log(guess);
+
         
       } else {
-                console.log("incorect: " + guess);
-        // incorrect guess
+        // incorrect guess:
+        notify("Your guess was incorect: " + guess);
+
         
       }
 
     }
 
+
+
+// var remainGuess = 9;
+// var correctGuess = 0;
+// var incorrectGuess = 0;
+
+// displayRemainGuess(remainGuess);
+
+
+
+
+
+
+
+
+
+
     // check for win!
     if(userArray.toString() === secretWord.toString()) {
-      console.log("win");
+      // console.log("win");
     } else {
-      console.log("nothing");
+      // console.log("nothing");
     }
 
 
 
+    console.log(userArray);
+    userGuess(userArray.join("&nbsp"));
 
-    userGuess(userArray.join(" "));
     compGuess(secretWord);
     // var correctIndex = secretWord.indexOf(guess); // find index of 
     // if (correctIndex >= 0) { // if
@@ -110,9 +164,9 @@ document.onkeyup = function(event) {
 
 
 
-  }
-} // end onkeyup function
+  
 
+}
 
 
 
@@ -128,12 +182,17 @@ function userGuess(str) {
   document.querySelector("#userGuess").innerHTML = str;
 }
 
+function displayRemainGuess(str) {
+  document.querySelector("#remainGuess").innerHTML = str;
+}
 
+function displayCorrectGuess(str) {
+  document.querySelector("#correctGuess").innerHTML = str;
+}
 
-
-
-
-
+function displayIncorrectGuess(str) {
+  document.querySelector("#incorrectGuess").innerHTML = str;
+}
 
 
 
