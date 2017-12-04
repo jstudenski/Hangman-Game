@@ -1,97 +1,81 @@
 window.onload = function() {
 
 
-notification("#notification", "Press and letter to begin!");
+// remove word from array once it has bee chosen 
+// alert when there are no more words to pick from
 
+// variables
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-var drinkNames = ['water water', 'milk man'];
+var drinkNames = ['water water', 'milk man']; // array of possible words
+var secretWord;     // word randomly chosen from drinkNames
+var userArray = [];      // stores correct guesses
+var guessedLetters = []; // stores all letters guessed
+var remainGuess;    // number of remaining guesses
+var correctGuess;   // number of correct guesses
+var incorrectGuess; // number of incorrect guesses
 
-// word to guess
-var secretWord;
-// blank array
-var userArray = [];
-var guessedLetters = [];
-
-var remainGuess = 9;
-var correctGuess = 0;
-var incorrectGuess = 0;
-
-
-notification("#guessesRemaining", remainGuess);
-notification("#correctGuesses", correctGuess);
-notification("#incorrectGuesses", incorrectGuess);
+// when game is loaded for the first time
+display("#notification", "Press and letter to begin!");
+// start a new game
+newGame();
 
 
-
-
-
-// on start pick word and set userArray to underscores
-pickWord();
-
-
-function pickWord() {
+function newGame() {
   // pick random work from drinkNames array and split into individual characters
   secretWord = drinkNames[Math.floor(Math.random() * drinkNames.length)].split("");
-  // create array of underscores 
+  console.log("Computer word: " + secretWord.join(""));
+
+  // create array of underscores and spaces
   for (var i = 0; i < secretWord.length; i++) {
-    if (secretWord[i]===" ") {
-      userArray.push(" ");
-    } else {
-      userArray.push("_");
-    }  
+    (secretWord[i]===" "? userArray.push(" ") : userArray.push("_"))
   }
-  console.log(secretWord);
 
-  notification('#userGuess', userArray.join("&nbsp"));
-} 
+  // set initial values and display them
+  display("#guessesRemaining", remainGuess = 9);
+  display("#correctGuesses", correctGuess = 0);
+  display("#incorrectGuesses", incorrectGuess = 0);
+  display('#userGuess', userArray.join("&nbsp"));
 
+  // create interactive alphabet divs 
+  for(var i=0; i<alphabet.length;i++) {
+    var div = document.createElement("div");
+    div.onclick = function() {runGame(this.id)}; // run the game when a letter is pressed
+    div.innerHTML = alphabet[i].toUpperCase(); // display letters
+    document.getElementById("alphabet").appendChild(div);
+    div.id = alphabet[i];
+  }
 
-// create alphabet divs 
-for(var i=0; i<alphabet.length;i++) {
-    var newDiv = document.createElement("div"); //.setAttribute("id", i);
-    // run the game when a letter is pressed
-    newDiv.onclick = function() {
-     runGame(this.id);
-    }
-    newDiv.innerHTML = alphabet[i].toUpperCase();
-    document.getElementById("alphabet").appendChild(newDiv);
-    newDiv.id = alphabet[i];
-}
-    
-// every time a key is pressed
+};
+
+// each time a key is pressed
 document.onkeyup = function(event) {
-  // make letter lower case (just in case)
-  var guess = event.key.toLowerCase(); 
-  // see if choice is a valid letter
-  if (alphabet.indexOf(guess) < 0) { 
-    notification("#notification", "<div class=\"red\">Invalid choice!</div> Please pick a letter");
+  var guess = event.key.toLowerCase(); // make letter lower case (just in case)
+  if (alphabet.indexOf(guess) < 0) {   // see if choice is a valid letter
+    display("#notification", "<div class=\"red\">Invalid choice!</div> Please pick a letter");
   } else {
     runGame(guess); // run the game
-  }  
-} // end onkeyup function
+  }
+};
 
 
 
 function runGame(guess) {
-
-
-  // has letter been guessed before?
-  if (guessedLetters.indexOf(guess) !== -1) {
-    // letter has already been chosen
-
-    notification("#notification", "That letter has already been chosen: " + guess);
+  
+  if (guessedLetters.indexOf(guess) !== -1) { // has letter been guessed before
+    display("#notification", "That letter: <b>" + guess + "</b>  has already been chosen.");
   } else {
+
     // a new letter has been chosen
-    // add guess to array of chosen letters
-    guessedLetters.push(guess);
+    
+    guessedLetters.push(guess); // add guess to array of letters chosen
 
     // find if guess appears in the word
     if (secretWord.indexOf(guess) >= 0) { 
-      notification("#notification", "Your guess: <b>" + guess + "</b> was <div class=\"green\">correct!</div>");
+      display("#notification", "Your guess: <b>" + guess + "</b> was <div class=\"green\">correct</div>!");
       // correct guess:
       document.getElementById(guess).style.backgroundColor = "#80ec11"; //green
       correctGuess++;
-      notification("#correctGuesses", correctGuess);
+      display("#correctGuesses", correctGuess);
 
             // replace items in user array with correct guesses
       for(var i=0; i<secretWord.length;i++) {
@@ -104,33 +88,37 @@ function runGame(guess) {
 
     } else { 
       // incorrect guess:
-      notification("#notification", "Your guess: <b>" + guess + "</b> was <div class=\"red\">incorrect.</div>");
+      display("#notification", "Your guess: <b>" + guess + "</b> was <div class=\"red\">incorrect</div>.");
       document.getElementById(guess).style.backgroundColor = "#ff3d2f"; // red
       incorrectGuess++;
       remainGuess--;
-      notification("#guessesRemaining", remainGuess);
-      notification("#incorrectGuesses", incorrectGuess);
+      display("#guessesRemaining", remainGuess);
+      display("#incorrectGuesses", incorrectGuess);
     };
 
   };
 
   
-  notification('#userGuess', userArray.join("&nbsp"));
+  display('#userGuess', userArray.join("&nbsp"));
 
 
-
-  // check for win!
-  if(userArray.toString() === secretWord.toString()) {
-    console.log("win");
+  if (remainGuess > 0) {
+    // check for win!
+    if(userArray.toString() === secretWord.toString()) {
+      console.log("win");
+    }
   } else {
-    
+   console.log("fail2");
   }
+
+
+
 
 }
 
 
 
-function notification(id, string) {
+function display(id, string) {
   document.querySelector(id).innerHTML = string;
 }
 
