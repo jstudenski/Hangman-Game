@@ -1,7 +1,7 @@
 window.onload = function() {
 
 
-notify("Press and letter to begin!");
+notification("#notification", "Press and letter to begin!");
 
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var drinkNames = ['water water', 'milk man'];
@@ -16,9 +16,11 @@ var remainGuess = 9;
 var correctGuess = 0;
 var incorrectGuess = 0;
 
-displayRemainGuess(remainGuess);
-displayCorrectGuess(correctGuess);
-displayIncorrectGuess(incorrectGuess);
+
+notification("#guessesRemaining", remainGuess);
+notification("#correctGuesses", correctGuess);
+notification("#incorrectGuesses", incorrectGuess);
+
 
 
 
@@ -38,8 +40,9 @@ function pickWord() {
       userArray.push("_");
     }  
   }
-  compGuess(secretWord);
-  userGuess(userArray.join(" "));
+  console.log(secretWord);
+
+  notification('#userGuess', userArray.join("&nbsp"));
 } 
 
 
@@ -61,7 +64,7 @@ document.onkeyup = function(event) {
   var guess = event.key.toLowerCase(); 
   // see if choice is a valid letter
   if (alphabet.indexOf(guess) < 0) { 
-    notify("Invalid choice! please pick a letter");
+    notification("#notification", "<div class=\"red\">Invalid choice!</div> Please pick a letter");
   } else {
     runGame(guess); // run the game
   }  
@@ -75,123 +78,60 @@ function runGame(guess) {
   // has letter been guessed before?
   if (guessedLetters.indexOf(guess) !== -1) {
     // letter has already been chosen
-    console.log("letter has already been chosen: " + guess);
+
+    notification("#notification", "That letter has already been chosen: " + guess);
   } else {
     // a new letter has been chosen
-    console.log("new letter was chosen: " + guess);
     // add guess to array of chosen letters
     guessedLetters.push(guess);
 
     // find if guess appears in the word
     if (secretWord.indexOf(guess) >= 0) { 
+      notification("#notification", "Your guess: <b>" + guess + "</b> was <div class=\"green\">correct!</div>");
       // correct guess:
       document.getElementById(guess).style.backgroundColor = "#80ec11"; //green
       correctGuess++;
-      displayCorrectGuess(correctGuess);
+      notification("#correctGuesses", correctGuess);
+
+            // replace items in user array with correct guesses
+      for(var i=0; i<secretWord.length;i++) {
+        if (secretWord[i] === guess) {
+          userArray[i] = guess; 
+        };
+
+      };
+
+
     } else { 
       // incorrect guess:
+      notification("#notification", "Your guess: <b>" + guess + "</b> was <div class=\"red\">incorrect.</div>");
       document.getElementById(guess).style.backgroundColor = "#ff3d2f"; // red
       incorrectGuess++;
       remainGuess--;
-      displayRemainGuess(remainGuess);
-      displayIncorrectGuess(incorrectGuess);
+      notification("#guessesRemaining", remainGuess);
+      notification("#incorrectGuesses", incorrectGuess);
     };
-
-
 
   };
 
-
-
-    for(var i=0; i<secretWord.length;i++) {
-      if (secretWord[i] === guess) {
-        // correct guess:
-
-        notify("Your guess was correct: " + guess);
-        // set array of user guesses 
-        userArray[i] = guess;
-
-        
-      } else {
-        // incorrect guess:
-        notify("Your guess was incorect: " + guess);
-
-        
-      }
-
-    }
-
-
-
-// var remainGuess = 9;
-// var correctGuess = 0;
-// var incorrectGuess = 0;
-
-// displayRemainGuess(remainGuess);
-
-
-
-
-
-
-
-
-
-
-    // check for win!
-    if(userArray.toString() === secretWord.toString()) {
-      // console.log("win");
-    } else {
-      // console.log("nothing");
-    }
-
-
-
-    console.log(userArray);
-    userGuess(userArray.join("&nbsp"));
-
-    compGuess(secretWord);
-    // var correctIndex = secretWord.indexOf(guess); // find index of 
-    // if (correctIndex >= 0) { // if
-
-
-    //   userArray[correctIndex] = guess;
-    //   console.log("correctIndex " + correctIndex);
-      
-    //   userGuess(userArray);
-
-
-
-
-
   
+  notification('#userGuess', userArray.join("&nbsp"));
+
+
+
+  // check for win!
+  if(userArray.toString() === secretWord.toString()) {
+    console.log("win");
+  } else {
+    
+  }
 
 }
 
 
 
-function notify(str) {
-  document.querySelector("#notification").innerHTML = str;
-}
-
-function compGuess(str) {
-  document.querySelector("#compGuess").innerHTML = str;
-}
-
-function userGuess(str) {
-  document.querySelector("#userGuess").innerHTML = str;
-}
-
-function displayRemainGuess(str) {
-  document.querySelector("#remainGuess").innerHTML = str;
-}
-
-function displayCorrectGuess(str) {
-  document.querySelector("#correctGuess").innerHTML = str;
-}
-
-function displayIncorrectGuess(str) {
-  document.querySelector("#incorrectGuess").innerHTML = str;
+function notification(id, string) {
+  document.querySelector(id).innerHTML = string;
 }
 
 
