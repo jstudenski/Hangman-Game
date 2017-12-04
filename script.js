@@ -91,7 +91,8 @@ function runGame(guess) {
   } else if (secretWord.indexOf(guess) >= 0){ // correct guess
     display("#notification", "Your guess: <b>" + guess + "</b> was <div class=\"green\">correct</div>!");
     guessedLetters.push(guess); // add guess to array of letters chosen
-    document.getElementById(guess).style.backgroundColor = "#80ec11"; // update alphabet
+    document.getElementById(guess).style.WebkitTransitionDuration = ".5s";
+    document.getElementById(guess).className += "correct";
     
     // replace all underscores in user array with correct guesses
     for(var i=0; i<secretWord.length;i++) {
@@ -104,7 +105,11 @@ function runGame(guess) {
   } else { // incorrect guess
     display("#notification", "Your guess: <b>" + guess + "</b> was <div class=\"red\">incorrect</div>.");
     guessedLetters.push(guess); // add guess to array of letters chosen  
-    document.getElementById(guess).style.backgroundColor = "#ff3d2f"; // update alphabet
+    // document.getElementById(guess).style.backgroundColor = "#ff3d2f"; // update alphabet
+    document.getElementById(guess).style.WebkitTransitionDuration = ".5s";
+    document.getElementById(guess).className += "incorrect";
+    
+
 
     display("#guessesRemaining", --remainGuess);
     display("#incorrectGuesses", ++incorrectGuess);
