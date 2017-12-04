@@ -4,20 +4,30 @@
     <meta charset="UTF-8">
     <title>Hangman Game</title>
     <script src="script.js"></script>
+    <link href="reset.css" rel="stylesheet" type="text/css">
     <link href="style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   </head>
   <body>
-    <h1>Hangman Game</h1>
+    
 
-notification:
-<div id="notification"></div>
+<div class="container">
+  <h1>Hangman Game</h1>
+  <div class="score"><h2>win</h2></div>
+  <div class="score"><h2>loss</h2></div>
+
+  <div id="notification"></div>
+  <div id="userGuess"></div>
+</div>
+
+
+
 
 <!-- compGuess:
 <div id="compGuess"></div> -->
 
-userGuess:
-<div id="userGuess"></div>
+
+
 
 
 <div id="guessesRemaining"></div>
@@ -26,7 +36,18 @@ userGuess:
 <br>
 
 <div id="alphabet"></div>
+<br>
+<br>
 
+<br>
+<br>
+<br>
+
+
+
+<div id="wins"></div>
+
+<div id="losses"></div>
 
   </body>
 </html>
