@@ -7,17 +7,34 @@
     <link href="reset.css" rel="stylesheet" type="text/css">
     <link href="style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
   </head>
   <body>
     
 
 <div class="container">
-  <h1>Hangman Game</h1>
-  <div class="score"><h2>win</h2></div>
-  <div class="score"><h2>loss</h2></div>
+  <header>
+    <div class="logo">
+      <h1>Guess the drink!</h1>
+    </div>
+    <div class="triangle"></div>
+    <div class="scorebar">
+      <div class="score"><h2>loss</h2><div id="losses"></div></div>
+      <div class="score"><h2>win</h2><div id="wins"></div></div>
+    </div>
+  </header>
+
+
+
+
 
   <div id="notification"></div>
   <div id="userGuess"></div>
+
+
+
+  <div id="alphabet"></div>
+  
 </div>
 
 
@@ -35,19 +52,10 @@
 <div id="incorrectGuesses"></div>
 <br>
 
-<div id="alphabet"></div>
-<br>
-<br>
-
-<br>
-<br>
-<br>
 
 
 
-<div id="wins"></div>
 
-<div id="losses"></div>
 
   </body>
 </html>

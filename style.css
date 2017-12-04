@@ -3,16 +3,159 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-
-h1 {
-  font-size: 20px;
+header {
+  height: 110px;
 }
 
+.logo {
+  float: left;
+  width: 145px;
+  text-align: center;
+  height: 110px;
+  background-color: #0f2238;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  letter-spacing: 2px;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.logo h1 {
+  font-size: 28px;
+  -ms-transform: rotate(-5deg); /* IE 9 */
+  -webkit-transform: rotate(-5deg); /* Chrome, Safari, Opera */
+  transform: rotate(-5deg);
+}
+
+.triangle {
+  width: 20px;
+  height: 110px;
+  float: left;
+  background-color: #182d4a;
+  clip-path: polygon(0px 0px, 0px 110px, 20px 90px);
+}
+
+.scorebar {
+  width: 100%;
+  background-color: #253f67;
+  height: 90px;
+}
+
+.score {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #0f2238;
+  border-radius: 1px;
+  display: inline-block;
+  margin: 15px 10px 0px 0px;
+  float: right;
+}
+
+.score h2 {
+  text-transform: uppercase;
+  background-color: #0f2238; 
+  color: #fff;
+  padding: 4px;
+}
+
+.score div {
+  color: #2f2f2f;
+}
+
+
+
+
+
+#alphabet div {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  float: left;
+  text-align: center;
+  margin: 5px;
+  border-radius: 5px;
+  padding-top: 4px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #2f2f2f;
+}
+
+#alphabet {
+  background-color: #713162;
+  width: 400px;
+  box-sizing: border-box;
+  padding: 20px;
+  height: 160px;
+  position: absolute; 
+  bottom: 0;
+}
+
+#alphabet div {
+    display: inline-block;
+    font-family: Arial, "Helvetica", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 1px 1px 0px #07526e;
+    padding-top: 6px;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* left: 30px; */
+    /* position: relative; */
+    cursor: pointer;
+    border: none;
+    background: #109bce;
+    background-image: linear-gradient(bottom, rgb(14,137,182) 0%, rgb(22,179,236) 100%);
+    /* border-radius: 5px; */
+    box-shadow: inset 0px 0px 0px #2ab7ec, 0px 2px 0px 0px #07526e;
+}
+
+
+button:active {
+  top:3px;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e, 0px 5px 3px #999;
+}
+
+button:before {
+  font-family: 'socialfont';
+  font-size: 50px;
+  line-height: 1em;
+  font-weight: normal;
+  color: #fff;
+  content:"\F020";
+  width:85px;
+  height:90px;
+  display:block;
+  position:absolute;
+  padding-top:10px;
+  top:10px;
+  text-shadow: 1px 1px 2px #07526e;
+
+}
+
+button:active:before {
+  top: 7px;
+  font-size: 50px;
+  text-shadow: 0px 3px 0px #07526e, 0px 5px 1px #07526e/*, 3px 0px 1px #07526e, 3px 3px 1px #07526e,
+     -2px 0px 1px #68cff2*/;
+}
+
+
+
+
+
+
+
 .container {
+  position: relative;
   width: 400px;
   height: 400px;
   background-color: tomato;
-  padding: 20px;
+/*  padding: 20px;*/
   box-sizing: border-box;
 }
 
@@ -36,22 +179,15 @@ h1 {
   text-transform: uppercase;
 }
 
-.score {
-  width: 60px;
-  height: 60px;
+
+
+#wins, #losses {
+  
+  font-size: 35px;
   text-align: center;
-  background-color: #fff;
-  border: 1px solid black;
-  border-radius: 3px;
-  display: inline-block;
+  font-weight: 800;
 }
 
-.score h2 {
-  text-transform: uppercase;
-  background-color: black; 
-  color: #fff;
-  padding: 4px;
-}
 
 
 
@@ -73,20 +209,6 @@ h1 {
 
 
 
-
-#wins, #losses {
-  color: salmon;
-  width: 100px;
-  height: 100px;
-  float: left;
-  margin: 10px;
-  background-color: #2f2f2f;
-  border-radius: 15px;
-  font-size: 50px;
-  padding-top: 16px;
-  text-align: center;
-  box-sizing: border-box;
-}
 
 
 
@@ -132,23 +254,5 @@ h1 {
 #userGuess span {
   color: #ff2929;
   display: inline;
-}
-
-
-#alphabet div {
-  width: 30px;
-  height: 30px;
-  background-color: #fff;
-  float: left;
-  text-align: center;
-  margin: 5px;
-  border-radius: 5px;
-  padding-top: 4px;
-  box-sizing: border-box;
-  border-bottom: 1px solid #2f2f2f;
-}
-
-#alphabet {
-  width: 399px;
 }
 
