@@ -1,9 +1,6 @@
 window.onload = function() {
 
 
-// remove word from array once it has bee chosen 
-// alert when there are no more words to pick from
-
 // variables
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var drinkNames = ['water water']; // array of possible words
@@ -29,7 +26,7 @@ function newGame() {
   secretWord = drinkNames[Math.floor(Math.random() * drinkNames.length)].split("");
   console.log("Computer word: " + secretWord.join(""));
   userArray = [];     // clear array
-  guessedLetters = [] // clear array
+  guessedLetters = []; // clear array
   // create array of underscores and spaces
   for (var i = 0; i < secretWord.length; i++) {
     (secretWord[i]===" "? userArray.push(" ") : userArray.push("_"))
@@ -89,9 +86,9 @@ function runGame(guess) {
   if (guessedLetters.indexOf(guess) !== -1) { // has letter been guessed before
     display("#notification", "That letter: <b>" + guess + "</b>  has already been chosen.");
   } else if (secretWord.indexOf(guess) >= 0){ // correct guess
-    display("#notification", "Your guess: <b>" + guess + "</b> was <div class=\"green\">correct</div>!");
+    display("#notification", "Your guess <b>" + guess + "</b> was <div class=\"green\">correct</div>!");
     guessedLetters.push(guess); // add guess to array of letters chosen
-    document.getElementById(guess).style.WebkitTransitionDuration = ".5s";
+    document.getElementById(guess).style.WebkitTransitionDuration = ".4s";
     document.getElementById(guess).className += "correct";
     
     // replace all underscores in user array with correct guesses
@@ -103,10 +100,10 @@ function runGame(guess) {
     display('#userGuess', userArray.join("&nbsp"));
 
   } else { // incorrect guess
-    display("#notification", "Your guess: <b>" + guess + "</b> was <div class=\"red\">incorrect</div>.");
+    display("#notification", "Your guess <b>" + guess + "</b> was <div class=\"red\">incorrect</div>.");
     guessedLetters.push(guess); // add guess to array of letters chosen  
     // document.getElementById(guess).style.backgroundColor = "#ff3d2f"; // update alphabet
-    document.getElementById(guess).style.WebkitTransitionDuration = ".5s";
+    document.getElementById(guess).style.WebkitTransitionDuration = ".4s";
     document.getElementById(guess).className += "incorrect";
     
 
@@ -132,8 +129,11 @@ function runGame(guess) {
     // show user missed letters
     for(var i=0; i<userArray.length;i++) {
       if (userArray[i] === "_") {userArray[i] = "<span>" + secretWord[i] + "</span>"};
-      display('#userGuess', userArray.join("&nbsp"));
+      
     }  
+    display('#userGuess', userArray.join("&nbsp"));
+
+
   }
 
 

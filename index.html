@@ -1,80 +1,48 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Hangman Game</title>
-    <script src="script.js"></script>
-    <link href="reset.css" rel="stylesheet" type="text/css">
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-  </head>
-  <body>
-    
+<head>
+  <meta charset="UTF-8">
+  <title>Hangman Game</title>
+  <script src="assets/javascript/game.js"></script>
+  <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+</head>
+<body>
 
-<div class="container">
-  <header>
-    <div class="logo">
-      <h1>Guess the drink!</h1>
+
+  <div class="container">
+    <header>
+      <div class="logo">
+        <h1>Guess the drink!</h1>
+      </div>
+      <div class="triangle"></div>
+      <div class="scorebar">
+        <div class="score"><h2>loss</h2><div id="losses"></div></div>
+        <div class="score"><h2>win</h2><div id="wins"></div></div>
+      </div>
+    </header>
+
+    <div id="notification"></div>
+    <div id="userGuess"></div>
+
+    <div class="numberbar">
+      <div class="lower">
+        <div class="box"><h2>correct</h2><div id="correctGuesses"></div></div>
+      </div>
+      <div class="angle left"></div>
+      <div class="raised">
+        <div class="box"><h2>remaining</h2><div id="guessesRemaining"></div></div>
+      </div>
+      <div class="angle right"></div>
+      <div class="lower">
+        <div class="box"><h2>incorrect</h2><div id="incorrectGuesses"></div></div>
+      </div>
     </div>
-    <div class="triangle"></div>
-    <div class="scorebar">
-      <div class="score"><h2>loss</h2><div id="losses"></div></div>
-      <div class="score"><h2>win</h2><div id="wins"></div></div>
-    </div>
-  </header>
 
+    <div id="alphabet"></div>
+  </div><!-- container -->
 
-
-
-
-  <div id="notification"></div>
-  <div id="userGuess"></div>
-
-
-<!--   <div class="raised"></div>
-  <div class="lower"></div> -->
-  <div class="numberbar">
-    <div class="lower">
-      <div class="box"><h2>correct</h2><div id="correctGuesses"></div></div>
-<!--       <h2>correct</h2>
-      <div id="correctGuesses"></div> -->
-    </div>
-    <div class="angle left"></div>
-    <div class="raised">
-      <div class="box"><h2>remaining</h2><div id="guessesRemaining"></div></div>
-<!--       <h2>remaining</h2>
-      <div id="guessesRemaining"></div> -->
-    </div>
-    <div class="angle right"></div>
-    <div class="lower">
-      <div class="box"><h2>incorrect</h2><div id="incorrectGuesses"></div></div>
-    </div>
-  </div>
-
-  <div id="alphabet"></div>
-
-
-</div>
-
-
-
-<!-- compGuess:
-<div id="compGuess"></div> -->
-
-
-
-
-
-
-
-
-<br>
-
-
-
-
-
-
-  </body>
+</body>
 </html>
