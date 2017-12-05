@@ -58,7 +58,7 @@ header {
   height: 110px;
   float: left;
   background-color: #182d4a;
-  clip-path: polygon(0px 0px, 0px 110px, 20px 90px);
+  clip-path: polygon(0 0, 0 110px, 20px 90px);
 }
 
 .scorebar {
@@ -77,9 +77,9 @@ header {
   border: 1px solid #0f2238;
   border-radius: 1px;
   display: inline-block;
-  margin: 15px 10px 0px 0px;
+  margin: 15px 10px 0 0;
   float: right;
-  box-shadow: 1px 1px 0px 0px #122d4c, 2px 2px 0px 0px #122d4c, 3px 3px 0px 0px #122d4c;
+  box-shadow: 1px 1px 0 0 #122d4c, 2px 2px 0 0 #122d4c, 3px 3px 0 0 #122d4c;
 }
 .score h2 {
   text-transform: uppercase;
@@ -105,11 +105,11 @@ header {
   color: #2f2f2f;
   padding-top: 7px;
   cursor: pointer;
-  box-shadow: 2px 2px 0px 0px #555555;
+  box-shadow: 2px 2px 0 0 #555555;
 }
 #alphabet div:active {
     transform: translateY(2px);
-    box-shadow: 0px 0px 0px 0px;
+    box-shadow: 0 0 0 0;
 }
 
 
@@ -140,18 +140,18 @@ header {
 #alphabet .incorrect {
     background-color: #fa2727;
     color: #fff;
-    box-shadow: 2px 2px 0px 0px #8b0000;
+    box-shadow: 2px 2px 0 0 #8b0000;
     text-shadow: 1px 1px #8b0000;
 }
 #alphabet .correct {
     background-color: #76c719;
     color: #fff;
-    box-shadow: 2px 2px 0px 0px #53722e;
+    box-shadow: 2px 2px 0 0 #53722e;
     text-shadow: 1px 1px #53722e;
 }
 
 #notification {
-    margin: 20px 20px 0px 20px;
+    margin: 20px 20px 0 20px;
     box-sizing: border-box;
     padding: 10px;
     background-color: #2f2f2f;
@@ -161,13 +161,13 @@ header {
 }
 
 #notification.default, #userGuess.default {
-  box-shadow: 1px 1px 0px 0px #d37500, 2px 2px 0px 0px #d37500;
+  box-shadow: 0 1px 0 0 #d37500, 0 2px 0 0 #d37500;
 }
 #notification.win, #userGuess.win {
-  box-shadow: 1px 1px 0px 0px #49791c, 2px 2px 0px 0px #49791c;
+  box-shadow: 0 1px 0 0 #49791c, 0 2px 0 0 #49791c;
 }
 #notification.loss, #userGuess.loss {
-  box-shadow: 1px 1px 0px 0px #930000, 2px 2px 0px 0px #930000;
+  box-shadow: 0 1px 0 0 #930000, 0 2px 0 0 #930000;
 }
 
 
@@ -178,7 +178,7 @@ header {
     text-transform: uppercase;
     border: 1px solid #fff;
     border-radius: 4px;
-    padding: 0px 5px;
+    padding: 0 5px;
 }
 
 
@@ -221,24 +221,17 @@ header {
     width: 10px;
     height: 100px;
     background-color: #720f59;
-/*    margin: 0px auto;*/
-    clip-path: polygon(0px 6px, 11px 0px, 11px 90px, 0px 96px);
+    clip-path: polygon(0 6px, 11px 0, 11px 90px, 0 96px);
 }
 .right {
     float: left;
     width: 10px;
     height: 100px;
     background-color: #720f59;
-  /*  margin: 0px auto;*/
-    clip-path: polygon(0px 0px, 11px 6px, 11px 96px, 0px 90px);
+    clip-path: polygon(0 0, 11px 6px, 11px 96px, 0 90px);
 }
-/*
-.numberbar {
-    width: 400px;
-    height: 100px;
-    float: left;
-}
-*/
+
+
 #wins,
 #losses {
     font-size: 35px;
@@ -255,7 +248,7 @@ header {
     display: inline-block;
     margin: 13px;
     border: 1px solid #3d0d2f;
-    box-shadow: 1px 1px 0px 0px #3d0d2f, 2px 2px 0px 0px #3d0d2f, 3px 3px 0px 0px #3d0d2f;
+    box-shadow: 1px 1px 0 0 #3d0d2f, 2px 2px 0 0 #3d0d2f, 3px 3px 0 0 #3d0d2f;
 }
 .box h2 {
     text-transform: uppercase;
