@@ -1,6 +1,5 @@
 window.onload = function() {
 
-
 // variables
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var drinkNames = ['water water']; // array of possible words
@@ -14,11 +13,14 @@ var wins = 0;   // initial wins
 var losses = 0; // initial losses
 var endofgame = false;
 
+
+
 // start a new game
 newGame();
 
 
 function newGame() {
+  style("default"); // set styles to default
   // when game is loaded for the first time
   display("#notification", "Guess a letter!");
 
@@ -84,10 +86,11 @@ document.onkeyup = function(event) {
 function runGame(guess) {
   
   if (guessedLetters.indexOf(guess) !== -1) { // has letter been guessed before
-    display("#notification", "That letter: <b>" + guess + "</b>  has already been chosen.");
+    display("#notification", "That letter <b>" + guess + "</b>  has already been chosen.");
   } else if (secretWord.indexOf(guess) >= 0){ // correct guess
     display("#notification", "Your guess <b>" + guess + "</b> was <div class=\"green\">correct</div>!");
     guessedLetters.push(guess); // add guess to array of letters chosen
+
     document.getElementById(guess).style.WebkitTransitionDuration = ".4s";
     document.getElementById(guess).className += "correct";
     
@@ -102,12 +105,10 @@ function runGame(guess) {
   } else { // incorrect guess
     display("#notification", "Your guess <b>" + guess + "</b> was <div class=\"red\">incorrect</div>.");
     guessedLetters.push(guess); // add guess to array of letters chosen  
-    // document.getElementById(guess).style.backgroundColor = "#ff3d2f"; // update alphabet
+
     document.getElementById(guess).style.WebkitTransitionDuration = ".4s";
     document.getElementById(guess).className += "incorrect";
     
-
-
     display("#guessesRemaining", --remainGuess);
     display("#incorrectGuesses", ++incorrectGuess);
   };
@@ -116,6 +117,7 @@ function runGame(guess) {
 
   // check for win
   if(userArray.toString() === secretWord.toString()) {
+    style("win");
     display("#wins", ++wins);
     display("#notification", "You've won! Press any key to start a new game.");
     endofgame = true;
@@ -123,20 +125,17 @@ function runGame(guess) {
 
   // check for loss
   if (remainGuess === 0) {
+    style("loss");
     display("#losses", ++losses);
     display("#notification", "You've lost. Press any key to start a new game.");
     endofgame = true;
     // show user missed letters
     for(var i=0; i<userArray.length;i++) {
       if (userArray[i] === "_") {userArray[i] = "<span>" + secretWord[i] + "</span>"};
-      
     }  
     display('#userGuess', userArray.join("&nbsp"));
 
-
   }
-
-
 
 };
 
@@ -146,6 +145,12 @@ function display(id, string) {
   document.querySelector(id).innerHTML = string;
 }
 
+function style(status){ // win, loss, default
+  document.getElementById('container').className = status;
+  document.getElementById('notification').className = status;
+  document.getElementById('userGuess').className = status;
+  document.getElementById('alphabet').className = status;
+}
 
 
 

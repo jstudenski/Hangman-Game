@@ -1,107 +1,131 @@
 body {
   font-family: 'Open Sans', sans-serif;
   background: #b7b9bf; 
-/*  background: -webkit-linear-gradient(to right, #FF5F6D, #ffac62);
-  background: linear-gradient(to right, #FF5F6D, #ffac62);*/
 }
 
+#container {
+  position: relative;
+  width: 400px;
+  height: 525px;
+  margin: 50px auto;
+}
 
-.container {
-    position: relative;
-    width: 400px;
-    height: 525px;
-    box-sizing: border-box;
-    margin: 50px auto;
-    background-color: #ffc04e;
-    background: -webkit-linear-gradient(to right, #ffca23, #ffc04e);
+#container.default {
+  background-color: #ffc04e;
+  background: -webkit-linear-gradient(to right, #ffca23, #ffc04e);
   background: linear-gradient(to right, #ffca23, #ffc04e);
 }
 
+#container.loss {
+  background-color: #ff0007;
+  background: -webkit-linear-gradient(to right, #ff0007, #bf0000);
+  background: linear-gradient(to right, #ff0007, #bf0000);
+}
 
-/*fcdf50*/
+#container.win {
+  background-color: #58cb00;
+  background: -webkit-linear-gradient(to right, #58cb00, #00b200);
+  background: linear-gradient(to right, #58cb00, #00b200);
+}
 
 header {
-    height: 110px;
+  height: 110px;
 }
+
 .logo {
-    float: left;
-    width: 145px;
-    text-align: center;
-    height: 110px;
-    background-color: #0f2238;
-    color: #fff;
-    box-sizing: border-box;
-    padding: 7px 20px;
-    letter-spacing: 2px;
-    font-family: 'Permanent Marker', cursive;
+  float: left;
+  width: 145px;
+  text-align: center;
+  height: 110px;
+  background-color: #0f2238;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 7px 20px;
+  letter-spacing: 2px;
+  font-family: 'Permanent Marker', cursive;
 }
+
 .logo h1 {
-    font-size: 29px;
-    text-shadow: 2px 2px #1e3f6a;
-    -ms-transform: rotate(-10deg);
-    -webkit-transform: rotate(-10deg);
-    transform: rotate(-10deg);
+  font-size: 29px;
+  text-shadow: 2px 2px #1e3f6a;
+  -ms-transform: rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+  transform: rotate(-10deg);
 }
+
 .triangle {
-    width: 20px;
-    height: 110px;
-    float: left;
-    background-color: #182d4a;
-    clip-path: polygon(0px 0px, 0px 110px, 20px 90px);
+  width: 20px;
+  height: 110px;
+  float: left;
+  background-color: #182d4a;
+  clip-path: polygon(0px 0px, 0px 110px, 20px 90px);
 }
+
 .scorebar {
-    width: 100%;
-    height: 90px;
-    border-bottom: 1px solid #09223a;
-    background-color: #253f67;
-
-    background: -webkit-linear-gradient(to right, #1c2b42, #314f7d);
-    background: linear-gradient(to right, #1c2b42, #314f7d);
-
+  height: 90px;
+  border-bottom: 2px solid #09223a;
+  background-color: #253f67;
+  background: -webkit-linear-gradient(to right, #1c2b42, #314f7d);
+  background: linear-gradient(to right, #1c2b42, #314f7d);
 }
+
 .score {
-    width: 60px;
-    height: 60px;
-    text-align: center;
-    background-color: #fff;
-    border: 1px solid #0f2238;
-    border-radius: 1px;
-    display: inline-block;
-    margin: 15px 10px 0px 0px;
-    float: right;
-    box-shadow: 1px 1px 0px 0px #122d4c, 2px 2px 0px 0px #122d4c, 3px 3px 0px 0px #122d4c;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #0f2238;
+  border-radius: 1px;
+  display: inline-block;
+  margin: 15px 10px 0px 0px;
+  float: right;
+  box-shadow: 1px 1px 0px 0px #122d4c, 2px 2px 0px 0px #122d4c, 3px 3px 0px 0px #122d4c;
 }
 .score h2 {
-    text-transform: uppercase;
-    background-color: #0f2238;
-    color: #fff;
-    padding: 4px;
+  text-transform: uppercase;
+  background-color: #0f2238;
+  color: #fff;
+  padding: 4px;
 }
 .score div {
-    color: #2f2f2f;
+  color: #2f2f2f;
 }
+
 #alphabet div {
-    width: 30px;
-    height: 30px;
-    background-color: #fff;
-    font-weight: 800;
-    float: left;
-    text-align: center;
-    margin: 5px;
-    border-radius: 5px;
-    padding-top: 4px;
-    box-sizing: border-box;
-    color: #2f2f2f;
-    padding-top: 7px;
-    cursor: pointer;
-    box-shadow: 2px 2px 0px 0px #555555;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  font-weight: 800;
+  float: left;
+  text-align: center;
+  margin: 5px;
+  border-radius: 5px;
+  padding-top: 4px;
+  box-sizing: border-box;
+  color: #2f2f2f;
+  padding-top: 7px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px 0px #555555;
 }
 #alphabet div:active {
     transform: translateY(2px);
     box-shadow: 0px 0px 0px 0px;
 }
+
+
+#alphabet.default {
+  border-top: 2px solid #d56b00; 
+}
+#alphabet.win {
+  border-top: 2px solid #2f7f00; 
+}
+#alphabet.loss {
+  border-top: 2px solid #a40000; 
+}
+
+
+
 #alphabet {
-  border-top: 1px solid #af5700;
   background-color: #47295e;
   background: -webkit-linear-gradient(to right, #692662, #47295e);
   background: linear-gradient(to right, #692662, #47295e);
@@ -112,6 +136,7 @@ header {
   position: absolute;
   bottom: 0;
 }
+
 #alphabet .incorrect {
     background-color: #fa2727;
     color: #fff;
@@ -133,8 +158,18 @@ header {
     color: #fff;
     border-radius: 5px;
     font-size: 15px;
-    box-shadow: 1px 1px 0px 0px #d37500, 2px 2px 0px 0px #d37500;
 }
+
+#notification.default, #userGuess.default {
+  box-shadow: 1px 1px 0px 0px #d37500, 2px 2px 0px 0px #d37500;
+}
+#notification.win, #userGuess.win {
+  box-shadow: 1px 1px 0px 0px #49791c, 2px 2px 0px 0px #49791c;
+}
+#notification.loss, #userGuess.loss {
+  box-shadow: 1px 1px 0px 0px #930000, 2px 2px 0px 0px #930000;
+}
+
 
 #notification b {
     margin: 0 3px;
@@ -158,7 +193,6 @@ header {
     height: auto;
     text-align: center;
     font-size: 35px;
-    box-shadow: 1px 1px 0px 0px #d37500, 2px 2px 0px 0px #d37500;
 }
 
 
@@ -169,7 +203,7 @@ header {
     margin-top: 6px;
     background-color: #8f2068;
     height: 90px;
-    bottom: 0;
+ /*   bottom: 0;*/
     box-sizing: border-box;
     border-bottom: 2px solid #7c005b;
 }
@@ -178,7 +212,7 @@ header {
     width: 124px;
     height: 90px;
     background-color: #772364;
-    margin: 0px auto;
+/*   margin: 0px;*/
     box-sizing: border-box;
     border-bottom: 2px solid #581846;
 }
@@ -187,22 +221,24 @@ header {
     width: 10px;
     height: 100px;
     background-color: #720f59;
-    margin: 0px auto;
-    clip-path: polygon(0px 6px, 10px 0px, 10px 90px, 0px 96px);
+/*    margin: 0px auto;*/
+    clip-path: polygon(0px 6px, 11px 0px, 11px 90px, 0px 96px);
 }
 .right {
     float: left;
     width: 10px;
     height: 100px;
     background-color: #720f59;
-    margin: 0px auto;
-    clip-path: polygon(0px 0px, 10px 6px, 10px 96px, 0px 90px);
+  /*  margin: 0px auto;*/
+    clip-path: polygon(0px 0px, 11px 6px, 11px 96px, 0px 90px);
 }
+/*
 .numberbar {
-    width: 100%;
+    width: 400px;
     height: 100px;
     float: left;
 }
+*/
 #wins,
 #losses {
     font-size: 35px;
