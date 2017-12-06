@@ -12,11 +12,10 @@ var incorrectGuess; // number of incorrect guesses
 var wins = 0;   // initial wins
 var losses = 0; // initial losses
 var endofgame = false;
+// sound effects
+var clink = new Audio("assets/sound/clink.wav");
+var fail = new Audio("assets/sound/fail.wav");
 
-
-
-// start a new game
-newGame();
 
 
 function newGame() {
@@ -77,8 +76,6 @@ document.onkeyup = function(event) {
     }
   }
 
-
-
 };
 
 
@@ -119,6 +116,7 @@ function runGame(guess) {
   if(userArray.toString() === secretWord.toString()) {
     style("win");
     display("#wins", ++wins);
+    clink.play();
     display("#notification", "You've won! Press any key to start a new game.");
     endofgame = true;
   }
@@ -127,9 +125,11 @@ function runGame(guess) {
   if (remainGuess === 0) {
     style("loss");
     display("#losses", ++losses);
+    fail.play();
     display("#notification", "You've lost. Press any key to start a new game.");
     endofgame = true;
-    // show user missed letters
+
+    // show user the letters they missed
     for(var i=0; i<userArray.length;i++) {
       if (userArray[i] === "_") {userArray[i] = "<span>" + secretWord[i] + "</span>"};
     }  
@@ -140,19 +140,29 @@ function runGame(guess) {
 };
 
 
-
 function display(id, string) {
   document.querySelector(id).innerHTML = string;
 }
 
 function style(status){ // win, loss, default
-  document.getElementById('container').className = status;
-  document.getElementById('notification').className = status;
-  document.getElementById('userGuess').className = status;
-  document.getElementById('alphabet').className = status;
+  ['container', 'notification', 'userGuess', 'alphabet'].forEach(function( id ) {
+    document.getElementById(id).className = status;
+  });
 }
 
 
+
+// start a new game
+newGame();
+
+// var hangmanGame = {
+//   word: [],
+//   guessed: [],
+//   makeGuess: function(letter) {
+//     if (this.word.includes(letter))
+//   }
+
+// }
 
 
 } // window.onload 
