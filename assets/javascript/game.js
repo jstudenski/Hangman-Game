@@ -1,10 +1,13 @@
 window.onload = function() {
 
-
-
 // variables
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-var drinkNames = ['water water']; // array of possible words
+
+
+// array of possible words
+
+// var drinkNames = ['Long Island Iced Tea'];
+var drinkNames = ['Irish Car Bomb','Sake Bomb','Singapore Sling','Tom Collins','Long Island Iced Tea','Gin and tonic','Gin Fizz','Pina Colada','Daiquiri','Caribou Lou','Cuba Libre','Mai Tai','Margarita','Tequila Sunrise'];
 var secretWord;     // word randomly chosen from drinkNames
 var userArray = [];      // stores correct guesses
 var guessedLetters = []; // stores all letters guessed
@@ -26,7 +29,7 @@ function newGame() {
   display("#notification", "Guess a letter!");
 
   // pick word and split it
-  secretWord = drinkNames[Math.floor(Math.random() * drinkNames.length)].split("");
+  secretWord = drinkNames[Math.floor(Math.random() * drinkNames.length)].toLowerCase().split("");
   console.log("Computer word: " + secretWord.join(""));
   userArray = [];     // clear array
   guessedLetters = []; // clear array
@@ -36,7 +39,7 @@ function newGame() {
   }
 
   // set initial values and display them
-  display("#guessesRemaining", remainGuess = 5);
+  display("#guessesRemaining", remainGuess = 8);
   display("#correctGuesses", correctGuess = 0);
   display("#incorrectGuesses", incorrectGuess = 0);
 
@@ -130,7 +133,6 @@ function runGame(guess) {
     fail.play();
     display("#notification", "You've lost. Press any key to start a new game.");
     endofgame = true;
-
     // show user the letters they missed
     for(var i=0; i<userArray.length;i++) {
       if (userArray[i] === "_") {userArray[i] = "<span>" + secretWord[i] + "</span>"};
