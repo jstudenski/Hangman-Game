@@ -5,8 +5,6 @@ var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 
 
 // array of possible words
-
-// var drinkNames = ['Long Island Iced Tea'];
 var drinkNames = ['Irish Car Bomb','Sake Bomb','Singapore Sling','Tom Collins','Long Island Iced Tea','Gin and tonic','Gin Fizz','Pina Colada','Daiquiri','Caribou Lou','Cuba Libre','Mai Tai','Margarita','Tequila Sunrise'];
 var secretWord;     // word randomly chosen from drinkNames
 var userArray = [];      // stores correct guesses
@@ -20,7 +18,6 @@ var endofgame = false;
 // sound effects
 var clink = new Audio("assets/sound/clink.wav");
 var fail = new Audio("assets/sound/fail.wav");
-
 
 
 function newGame() {
