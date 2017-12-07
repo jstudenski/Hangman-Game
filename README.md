@@ -1,4 +1,2 @@
-to do: 
-alphabet buttons should also trigger events
-favicon
-Safari clipping
+### Hangman Game
+A simple HTML/CSS/JavaScript hangman game!
